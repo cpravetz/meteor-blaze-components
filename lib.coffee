@@ -1,3 +1,5 @@
+meteorBabelHelpers = Package.modules.meteorBabelHelpers
+
 # TODO: Deduplicate between blaze component and common component packages.
 createMatcher = (propertyOrMatcherOrFunction, checkMixins) ->
   if _.isString propertyOrMatcherOrFunction

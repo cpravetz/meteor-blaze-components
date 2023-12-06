@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'peerlibrary:blaze-components',
+  name: 'seakaytee:blaze-components',
   summary: "Reusable components for Blaze",
   version: '0.23.0',
   git: 'https://github.com/peerlibrary/meteor-blaze-components.git'
@@ -9,11 +9,11 @@ Package.describe({
 Package.registerBuildPlugin({
   name: "compileBlazeComponentsTemplatesBatch",
   use: [
-    'caching-html-compiler@1.1.3',
-    'ecmascript@0.12.7',
-    'templating-tools@1.1.2',
-    'spacebars-compiler@1.1.3',
-    'html-tools@1.0.11'
+    'caching-html-compiler',
+    'ecmascript',
+    'templating-tools',
+    'spacebars-compiler',
+    'html-tools'
   ],
   sources: [
     'patch-compiling.js',
@@ -22,25 +22,26 @@ Package.registerBuildPlugin({
 });
 
 Package.onUse(function (api) {
-  api.versionsFrom('METEOR@1.8.1');
+   api.versionsFrom(['METEOR@1.8.1','2.3']);
 
   // Core dependencies.
   api.use([
-    'blaze@2.3.3',
-    'coffeescript@2.4.1',
+    'blaze',
+    'coffeescript',
+    'babel-runtime',
     'underscore',
     'tracker',
     'reactive-var',
     'ejson',
-    'spacebars@1.0.15',
-    'jquery@1.11.11'
+    'spacebars',
+    'jquery'
   ]);
 
   // If templating package is among dependencies, we want it to be loaded before
   // us to not override our augmented functions. But we cannot make a real dependency
   // because of a plugin conflict (both us and templating are registering a *.html plugin).
   api.use([
-    'templating@1.3.2'
+    'templating'
   ], {weak: true});
 
   api.imply([
@@ -53,7 +54,7 @@ Package.onUse(function (api) {
 
   // Internal dependencies.
   api.use([
-    'peerlibrary:base-component@0.17.1'
+    'seakaytee:base-component'
   ]);
 
   // 3rd party dependencies.
@@ -91,12 +92,12 @@ Package.onUse(function (api) {
 });
 
 Package.onTest(function (api) {
-  api.versionsFrom('METEOR@1.8.1');
+   //api.VersionsFrom('METEOR@1.8.1');
 
   // Core dependencies.
   api.use([
-    'coffeescript@2.4.1',
-    'jquery@1.11.11',
+    'coffeescript',
+    'jquery',
     'reactive-var',
     'underscore',
     'tracker',
